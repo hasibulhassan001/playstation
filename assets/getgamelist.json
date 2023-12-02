@@ -21,27 +21,6 @@
               "name": "PlayStation 5",
               "slug": "playstation5"
             }
-          },
-          {
-            "platform": {
-              "id": 1,
-              "name": "Xbox One",
-              "slug": "xbox-one"
-            }
-          },
-          {
-            "platform": {
-              "id": 18,
-              "name": "PlayStation 4",
-              "slug": "playstation4"
-            }
-          },
-          {
-            "platform": {
-              "id": 186,
-              "name": "Xbox Series S/X",
-              "slug": "xbox-series-x"
-            }
           }
         ],
         "stores": [
@@ -517,30 +496,9 @@
           },
           {
             "platform": {
-              "id": 1,
-              "name": "Xbox One",
-              "slug": "xbox-one"
-            }
-          },
-          {
-            "platform": {
-              "id": 18,
-              "name": "PlayStation 4",
-              "slug": "playstation4"
-            }
-          },
-          {
-            "platform": {
               "id": 186,
               "name": "Xbox Series S/X",
               "slug": "xbox-series-x"
-            }
-          },
-          {
-            "platform": {
-              "id": 7,
-              "name": "Nintendo Switch",
-              "slug": "nintendo-switch"
             }
           }
         ],
@@ -977,20 +935,6 @@
         "platforms": [
           {
             "platform": {
-              "id": 4,
-              "name": "PC",
-              "slug": "pc"
-            }
-          },
-          {
-            "platform": {
-              "id": 187,
-              "name": "PlayStation 5",
-              "slug": "playstation5"
-            }
-          },
-          {
-            "platform": {
               "id": 18,
               "name": "PlayStation 4",
               "slug": "playstation4"
@@ -1346,20 +1290,7 @@
         "name": "Aeterna Noctis",
         "playtime": 2,
         "platforms": [
-          {
-            "platform": {
-              "id": 4,
-              "name": "PC",
-              "slug": "pc"
-            }
-          },
-          {
-            "platform": {
-              "id": 187,
-              "name": "PlayStation 5",
-              "slug": "playstation5"
-            }
-          },
+          
           {
             "platform": {
               "id": 1,
@@ -1850,27 +1781,6 @@
               "name": "PC",
               "slug": "pc"
             }
-          },
-          {
-            "platform": {
-              "id": 187,
-              "name": "PlayStation 5",
-              "slug": "playstation5"
-            }
-          },
-          {
-            "platform": {
-              "id": 1,
-              "name": "Xbox One",
-              "slug": "xbox-one"
-            }
-          },
-          {
-            "platform": {
-              "id": 18,
-              "name": "PlayStation 4",
-              "slug": "playstation4"
-            }
           }
         ],
         "stores": [
@@ -2238,41 +2148,6 @@
         "name": "Firegirl: Hack 'n Splash Rescue",
         "playtime": 3,
         "platforms": [
-          {
-            "platform": {
-              "id": 4,
-              "name": "PC",
-              "slug": "pc"
-            }
-          },
-          {
-            "platform": {
-              "id": 187,
-              "name": "PlayStation 5",
-              "slug": "playstation5"
-            }
-          },
-          {
-            "platform": {
-              "id": 1,
-              "name": "Xbox One",
-              "slug": "xbox-one"
-            }
-          },
-          {
-            "platform": {
-              "id": 18,
-              "name": "PlayStation 4",
-              "slug": "playstation4"
-            }
-          },
-          {
-            "platform": {
-              "id": 186,
-              "name": "Xbox Series S/X",
-              "slug": "xbox-series-x"
-            }
-          },
           {
             "platform": {
               "id": 7,
@@ -2714,20 +2589,6 @@
           },
           {
             "platform": {
-              "id": 187,
-              "name": "PlayStation 5",
-              "slug": "playstation5"
-            }
-          },
-          {
-            "platform": {
-              "id": 1,
-              "name": "Xbox One",
-              "slug": "xbox-one"
-            }
-          },
-          {
-            "platform": {
               "id": 18,
               "name": "PlayStation 4",
               "slug": "playstation4"
@@ -2993,20 +2854,7 @@
         "name": "FINAL FANTASY XIV: Endwalker",
         "playtime": 0,
         "platforms": [
-          {
-            "platform": {
-              "id": 4,
-              "name": "PC",
-              "slug": "pc"
-            }
-          },
-          {
-            "platform": {
-              "id": 187,
-              "name": "PlayStation 5",
-              "slug": "playstation5"
-            }
-          },
+          
           {
             "platform": {
               "id": 18,
@@ -3154,20 +3002,6 @@
               "id": 4,
               "name": "PC",
               "slug": "pc"
-            }
-          },
-          {
-            "platform": {
-              "id": 187,
-              "name": "PlayStation 5",
-              "slug": "playstation5"
-            }
-          },
-          {
-            "platform": {
-              "id": 1,
-              "name": "Xbox One",
-              "slug": "xbox-one"
             }
           },
           {
@@ -3605,27 +3439,7 @@
         "name": "Heavenly Bodies",
         "playtime": 3,
         "platforms": [
-          {
-            "platform": {
-              "id": 4,
-              "name": "PC",
-              "slug": "pc"
-            }
-          },
-          {
-            "platform": {
-              "id": 187,
-              "name": "PlayStation 5",
-              "slug": "playstation5"
-            }
-          },
-          {
-            "platform": {
-              "id": 18,
-              "name": "PlayStation 4",
-              "slug": "playstation4"
-            }
-          },
+          
           {
             "platform": {
               "id": 5,
@@ -3979,20 +3793,7 @@
         "name": "Aftermath (2022)",
         "playtime": 0,
         "platforms": [
-          {
-            "platform": {
-              "id": 4,
-              "name": "PC",
-              "slug": "pc"
-            }
-          },
-          {
-            "platform": {
-              "id": 187,
-              "name": "PlayStation 5",
-              "slug": "playstation5"
-            }
-          },
+          
           {
             "platform": {
               "id": 186,
@@ -4378,27 +4179,6 @@
               "id": 4,
               "name": "PC",
               "slug": "pc"
-            }
-          },
-          {
-            "platform": {
-              "id": 187,
-              "name": "PlayStation 5",
-              "slug": "playstation5"
-            }
-          },
-          {
-            "platform": {
-              "id": 1,
-              "name": "Xbox One",
-              "slug": "xbox-one"
-            }
-          },
-          {
-            "platform": {
-              "id": 18,
-              "name": "PlayStation 4",
-              "slug": "playstation4"
             }
           },
           {
@@ -4867,34 +4647,7 @@
         "name": "Happy's Humble Burger Farm",
         "playtime": 3,
         "platforms": [
-          {
-            "platform": {
-              "id": 4,
-              "name": "PC",
-              "slug": "pc"
-            }
-          },
-          {
-            "platform": {
-              "id": 187,
-              "name": "PlayStation 5",
-              "slug": "playstation5"
-            }
-          },
-          {
-            "platform": {
-              "id": 1,
-              "name": "Xbox One",
-              "slug": "xbox-one"
-            }
-          },
-          {
-            "platform": {
-              "id": 18,
-              "name": "PlayStation 4",
-              "slug": "playstation4"
-            }
-          },
+          
           {
             "platform": {
               "id": 186,
@@ -5431,13 +5184,6 @@
         "platforms": [
           {
             "platform": {
-              "id": 4,
-              "name": "PC",
-              "slug": "pc"
-            }
-          },
-          {
-            "platform": {
               "id": 187,
               "name": "PlayStation 5",
               "slug": "playstation5"
@@ -5445,23 +5191,9 @@
           },
           {
             "platform": {
-              "id": 1,
-              "name": "Xbox One",
-              "slug": "xbox-one"
-            }
-          },
-          {
-            "platform": {
               "id": 18,
               "name": "PlayStation 4",
               "slug": "playstation4"
-            }
-          },
-          {
-            "platform": {
-              "id": 186,
-              "name": "Xbox Series S/X",
-              "slug": "xbox-series-x"
             }
           }
         ],
@@ -5725,20 +5457,7 @@
         "name": "Dead by Daylight - Portrait of a Murder",
         "playtime": 0,
         "platforms": [
-          {
-            "platform": {
-              "id": 4,
-              "name": "PC",
-              "slug": "pc"
-            }
-          },
-          {
-            "platform": {
-              "id": 187,
-              "name": "PlayStation 5",
-              "slug": "playstation5"
-            }
-          },
+          
           {
             "platform": {
               "id": 1,
@@ -5751,20 +5470,6 @@
               "id": 18,
               "name": "PlayStation 4",
               "slug": "playstation4"
-            }
-          },
-          {
-            "platform": {
-              "id": 186,
-              "name": "Xbox Series S/X",
-              "slug": "xbox-series-x"
-            }
-          },
-          {
-            "platform": {
-              "id": 7,
-              "name": "Nintendo Switch",
-              "slug": "nintendo-switch"
             }
           }
         ],
@@ -5886,46 +5591,12 @@
         "name": "Asterix & Obelix: Slap them All!",
         "playtime": 0,
         "platforms": [
-          {
-            "platform": {
-              "id": 4,
-              "name": "PC",
-              "slug": "pc"
-            }
-          },
-          {
-            "platform": {
-              "id": 187,
-              "name": "PlayStation 5",
-              "slug": "playstation5"
-            }
-          },
+          
           {
             "platform": {
               "id": 1,
               "name": "Xbox One",
               "slug": "xbox-one"
-            }
-          },
-          {
-            "platform": {
-              "id": 18,
-              "name": "PlayStation 4",
-              "slug": "playstation4"
-            }
-          },
-          {
-            "platform": {
-              "id": 186,
-              "name": "Xbox Series S/X",
-              "slug": "xbox-series-x"
-            }
-          },
-          {
-            "platform": {
-              "id": 7,
-              "name": "Nintendo Switch",
-              "slug": "nintendo-switch"
             }
           }
         ],
@@ -6298,41 +5969,6 @@
         "name": "Farming Simulator 22",
         "playtime": 10,
         "platforms": [
-          {
-            "platform": {
-              "id": 4,
-              "name": "PC",
-              "slug": "pc"
-            }
-          },
-          {
-            "platform": {
-              "id": 187,
-              "name": "PlayStation 5",
-              "slug": "playstation5"
-            }
-          },
-          {
-            "platform": {
-              "id": 1,
-              "name": "Xbox One",
-              "slug": "xbox-one"
-            }
-          },
-          {
-            "platform": {
-              "id": 18,
-              "name": "PlayStation 4",
-              "slug": "playstation4"
-            }
-          },
-          {
-            "platform": {
-              "id": 186,
-              "name": "Xbox Series S/X",
-              "slug": "xbox-series-x"
-            }
-          },
           {
             "platform": {
               "id": 5,
@@ -6860,41 +6496,6 @@
         "platforms": [
           {
             "platform": {
-              "id": 4,
-              "name": "PC",
-              "slug": "pc"
-            }
-          },
-          {
-            "platform": {
-              "id": 187,
-              "name": "PlayStation 5",
-              "slug": "playstation5"
-            }
-          },
-          {
-            "platform": {
-              "id": 1,
-              "name": "Xbox One",
-              "slug": "xbox-one"
-            }
-          },
-          {
-            "platform": {
-              "id": 18,
-              "name": "PlayStation 4",
-              "slug": "playstation4"
-            }
-          },
-          {
-            "platform": {
-              "id": 186,
-              "name": "Xbox Series S/X",
-              "slug": "xbox-series-x"
-            }
-          },
-          {
-            "platform": {
               "id": 7,
               "name": "Nintendo Switch",
               "slug": "nintendo-switch"
@@ -7265,13 +6866,7 @@
         "name": "Kid A Mnesia: Exhibition",
         "playtime": 0,
         "platforms": [
-          {
-            "platform": {
-              "id": 4,
-              "name": "PC",
-              "slug": "pc"
-            }
-          },
+          
           {
             "platform": {
               "id": 187,
