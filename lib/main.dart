@@ -1,15 +1,14 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:group_list_view/group_list_view.dart';
 import 'dart:developer';
 import 'package:playstation/View/gamedetails.dart';
 import 'ViewModel/gameDetailsViewModel.dart';
-import 'APIHelper/apiHelper.dart';
 import 'package:http/http.dart' as http;
 
 void main() => runApp(MyApp());
 
+GameData? gData;
 List _items = [];
 List<String> platforms = [];
 
@@ -105,20 +104,24 @@ void clearAllList() {
   log("mapGames : ${mapGames.length}");
 }
 
+void getGameData(var responseData) {
+  geners = '';
+  log("getGameData: ${responseData["genres"].length}");
+  for (var i = 0; i < responseData["genres"].length; i++) {
+    // ignore: prefer_interpolation_to_compose_strings
+    geners = '$geners '+responseData["genres"][i]["name"];
+  }
+  rating = responseData["rating"].toString();
+  log("OBJ: ${geners.toString()}");
+}
+
+GameData makeObj(GameData data) {
+  return GameData(data.gameName, data.imageLink, data.releaseDate, data.metacritic, data.gameID, geners, rating);
+}
+
 // ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   MyApp({super.key});
-
-  // Fetch content from the json file
-  // Future<void> readJson(String responseStr) async {
-  //   // log("Json to Str: $responseStr");
-  //   // final String response = await rootBundle.loadString(responseStr);
-  //   // final data = await json.decode(response);
-  //   _items = responseStr["results"];
-
-  //   _gameList(_items);
-  //   _makeGameList(_items);
-  // }
 
   //Applying get request.
   Future<void> getGameList() async {
@@ -147,9 +150,37 @@ class MyApp extends StatelessWidget {
     final response = await http.get(Uri.parse(requestUrl));
  
     var responseData = json.decode(response.body);
+    await Future.delayed(const Duration(seconds: 1), (){});
     _items = responseData["results"];
     _gameList(_items);
     _makeGameList(_items);
+    
+  }
+
+  //gameDetails api calling after tap on card
+  void getGameDetails(int gameID) async {
+    //replace your restFull API here.
+    String baseUrl = 'https://api.rawg.io/api/games/';
+    String endpointUrl = '';
+    String requestUrl = '';
+    String queryString = '';
+
+    //https://api.rawg.io/api/games/437049?key=02ef6ba5d13444ee86bad607e8bce3f4
+    Map<String, String> queryParams = {
+      'key': '02ef6ba5d13444ee86bad607e8bce3f4'
+    };
+
+    endpointUrl = '$baseUrl$gameID';
+    queryString = Uri(queryParameters: queryParams).query;
+    requestUrl = '$endpointUrl?$queryString';
+
+    log("API Url: $requestUrl");
+
+    final response = await http.get(Uri.parse(requestUrl));
+ 
+    var responseData = json.decode(response.body);
+
+    getGameData(responseData);
   }
 
   @override
@@ -213,7 +244,8 @@ class MyApp extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
           onTap: () {
-            _awaitReturnValueFromSecondScreen(context, data);
+            getGameDetails(data.gameID);
+            _awaitReturnValueFromSecondScreen(context, makeObj(data));
           },
         ),
       ),
@@ -264,7 +296,7 @@ class MyApp extends StatelessWidget {
       }
     }
     log("Url: $imageLink");
-    return GameData(gameName, imageLink, releaseDate, metacritic, gameID);
+    return GameData(gameName, imageLink, releaseDate, metacritic, gameID,'','');
   }
 
   void _logUser(String user) {
@@ -274,7 +306,10 @@ class MyApp extends StatelessWidget {
   void _awaitReturnValueFromSecondScreen(BuildContext context, GameData data) async {
     log("Data : ${data.gameName}");
 
+    await Future.delayed(const Duration(seconds: 2), (){});
+
     // start the SecondScreen and wait for it to finish with a result
+    // ignore: unused_local_variable, use_build_context_synchronously
     final result = await Navigator.push(
         context,
         MaterialPageRoute(

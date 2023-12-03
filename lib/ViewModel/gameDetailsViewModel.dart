@@ -6,8 +6,10 @@ class GameData {
   String releaseDate = '';
   int metacritic = -1;
   int gameID = 0;
+  String geners = '';
+  String rating = '';
 
-  GameData(this.gameName,this.imageLink,this.releaseDate,this.metacritic,this.gameID);
+  GameData(this.gameName,this.imageLink,this.releaseDate,this.metacritic,this.gameID, this.geners, this.rating);
 }
 
 class GameInfo {
