@@ -5,7 +5,8 @@ import 'package:group_list_view/group_list_view.dart';
 import 'dart:developer';
 import 'package:playstation/View/gamedetails.dart';
 import 'ViewModel/gameDetailsViewModel.dart';
-
+import 'APIHelper/apiHelper.dart';
+import 'package:http/http.dart' as http;
 
 void main() => runApp(MyApp());
 
@@ -109,21 +110,52 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   // Fetch content from the json file
-  Future<void> readJson() async {
-  final String response = await rootBundle.loadString('assets/getgamelist.json');
-  final data = await json.decode(response);
-   _items = data["results"];
+  // Future<void> readJson(String responseStr) async {
+  //   // log("Json to Str: $responseStr");
+  //   // final String response = await rootBundle.loadString(responseStr);
+  //   // final data = await json.decode(response);
+  //   _items = responseStr["results"];
 
-   _gameList(_items);
-   _makeGameList(_items);
+  //   _gameList(_items);
+  //   _makeGameList(_items);
+  // }
+
+  //Applying get request.
+  Future<void> getGameList() async {
+    //replace your restFull API here.
+    String baseUrl = 'https://api.rawg.io/api/games';
+    String endpointUrl = '';
+    String requestUrl = '';
+    String queryString = '';
+
+    //https://api.rawg.io/api/games?page=1&page_size=20&platforms=187&dates=2020-12-21,2021-12-21&ordering=-released&key=02ef6ba5d13444ee86bad607e8bce3f4
+    Map<String, String> queryParams = {
+      'page': '1',
+      'page_size': '20',
+      'platforms': '187',
+      'dates': '2020-12-21,2021-12-21',
+      'ordering': '-released',
+      'key': '02ef6ba5d13444ee86bad607e8bce3f4'
+    };
+
+    endpointUrl = baseUrl;//'$baseUrl$gameID';
+    queryString = Uri(queryParameters: queryParams).query;
+    requestUrl = '$endpointUrl?$queryString';
+
+    log("API Url: $requestUrl");
+
+    final response = await http.get(Uri.parse(requestUrl));
+ 
+    var responseData = json.decode(response.body);
+    _items = responseData["results"];
+    _gameList(_items);
+    _makeGameList(_items);
   }
 
   @override
   Widget build(BuildContext context) {
-    
     _logUser("Main App Called");
-    // clearAllList();
-    readJson();
+    getGameList();
 
     return MaterialApp(
       title: 'PlayStation Demo',
@@ -167,12 +199,6 @@ class MyApp extends StatelessWidget {
         child: ListTile(
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 18, vertical: 10.0),
-          // leading: CircleAvatar(
-          //   child: Text(
-          //     _getInitials(data.gameName),
-          //     style: const TextStyle(color: Colors.white, fontSize: 18),
-          //   ),
-          // ),
           title: Text(
             mapGames.values.toList()[index.section][index.index],
             style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
@@ -223,9 +249,11 @@ class MyApp extends StatelessWidget {
     String imageLink = '';
     String releaseDate = '';
     int metacritic = -1;
+    int gameID = 0;
 
     for (var i = 0;  i < _items.length; i++) {
       if (gameName == _items[i]["name"]) {
+        gameID = _items[i]["id"];
         imageLink = _items[i]["background_image"];
         releaseDate = _items[i]["released"];
         if (_items[i]["metacritic"] != null) {
@@ -237,7 +265,7 @@ class MyApp extends StatelessWidget {
       }
     }
     log("Url: $imageLink");
-    return GameData(gameName, imageLink, releaseDate, metacritic);
+    return GameData(gameName, imageLink, releaseDate, metacritic, gameID);
   }
 
   void _logUser(String user) {

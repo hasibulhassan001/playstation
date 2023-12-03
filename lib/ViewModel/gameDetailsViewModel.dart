@@ -5,6 +5,13 @@ class GameData {
   String imageLink = '';
   String releaseDate = '';
   int metacritic = -1;
+  int gameID = 0;
 
-  GameData(this.gameName,this.imageLink,this.releaseDate,this.metacritic);
+  GameData(this.gameName,this.imageLink,this.releaseDate,this.metacritic,this.gameID);
+}
+
+class GameInfo {
+  List geners = [];
+
+  GameInfo(this.geners);
 }
