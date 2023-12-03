@@ -156,7 +156,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     _logUser("Main App Called");
     getGameList();
-
     return MaterialApp(
       title: 'PlayStation Demo',
       theme: ThemeData(

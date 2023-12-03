@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:playstation/ViewModel/gameDetailsViewModel.dart';
 
 String geners = '';
+String rating = '';
+int id = 0;
 
 class GameDetails extends StatefulWidget {
   const GameDetails({super.key});
@@ -23,12 +25,22 @@ void getGameData(var responseData) {
     // ignore: prefer_interpolation_to_compose_strings
     geners = '$geners '+responseData["genres"][i]["name"];
   }
+  rating = responseData["rating"].toString();
   log("OBJ: ${geners.toString()}");
 }
 
 class _GameDetails extends State<GameDetails> {
+  bool isLoading = true;
+  
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      getGameDetails(id);
+    });
+  }
 
-  Future<void> getGameDetails(int gameID) async {
+  void getGameDetails(int gameID) async {
     //replace your restFull API here.
     String baseUrl = 'https://api.rawg.io/api/games/';
     String endpointUrl = '';
@@ -50,17 +62,15 @@ class _GameDetails extends State<GameDetails> {
  
     var responseData = json.decode(response.body);
 
-    // log("GD: ${responseData.toString()}");
+    setState(() => isLoading = false);
 
     getGameData(responseData);
-    // return GameData(responseData["name"], responseData["background_image"], responseData["released"], metacritic, gameID);
   }
 
   @override
   Widget build(BuildContext context) {
     final data = ModalRoute.of(context)!.settings.arguments as GameData;
-    getGameDetails(data.gameID);
-    
+    id = data.gameID;
     log("_GameDetails: ${data.gameName}");
     return Scaffold(
       appBar: AppBar(title: const Text('Game Details')),
@@ -89,6 +99,9 @@ class _GameDetails extends State<GameDetails> {
             ),
             SizedBox(
               child: Text("Genres: $geners"),
+            ),
+            SizedBox(
+              child: Text("Rating: $rating"),
             ),
           ],
         ),
