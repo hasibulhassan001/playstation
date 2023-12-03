@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:group_list_view/group_list_view.dart';
 import 'dart:developer';
-import 'package:playstation/gamedetails.dart';
+import 'package:playstation/View/gamedetails.dart';
+import 'ViewModel/gameDetailsViewModel.dart';
 
 
 void main() => runApp(MyApp());
@@ -19,17 +20,6 @@ List<String> platforms6 = [];
 List<String> platforms7 = [];
 
 Map<String, List> mapGames = {};
-
-// Map<String, List> _elements = {
-//   'Team A': ['Five Nights at Freddy: Security Breach', 'Ehsan Woodard', 'River Bains'],
-//   'Team B': ['Toyah Downs', 'Tyla Kane'],
-//   'Team C': ['Marcus Romero', 'Farrah Parkes', 'Fay Lawson', 'Asif Mckay'],
-//   'Team D': ['Casey Zuniga', 'Ayisha Burn', 'Josie Hayden', 'Kenan Walls', 'Mario Powers'],
-//   'Team Q': ['Toyah Downs', 'Tyla Kane', 'Toyah Downs'],
-//   'Team X': ['Toyah Downs', 'Kenan Walls', 'Mario Powers'],
-//   'Team Z': ['Toyah Downs', 'Tyla Kane', 'Kenan Walls', 'Mario Powers'],
-// };
-
 
 void _makeGameList(List gameList) {
   var i = 0, j = 0;
@@ -144,6 +134,8 @@ class MyApp extends StatelessWidget {
 
   Widget _itemBuilder(BuildContext context, IndexPath index) {
     String user = mapGames.values.toList()[index.section][index.index];
+    GameData data = GameData(user);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Card(
@@ -163,7 +155,7 @@ class MyApp extends StatelessWidget {
           ),
           trailing: const Icon(Icons.arrow_forward_ios),
           onTap: () {
-            _awaitReturnValueFromSecondScreen(context);
+            _awaitReturnValueFromSecondScreen(context, data);
           },
         ),
       ),
@@ -200,13 +192,18 @@ class MyApp extends StatelessWidget {
     log(user);
   }
 
-  void _awaitReturnValueFromSecondScreen(BuildContext context) async {
+  void _awaitReturnValueFromSecondScreen(BuildContext context, GameData data) async {
+    log("Data : ${data.gameName}");
 
     // start the SecondScreen and wait for it to finish with a result
     final result = await Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const GameDetails()
-        ),);
+          builder: (context) => const GameDetails(),
+          settings: RouteSettings(
+            arguments: data
+          ),
+        ),
+      );
   }
 }
