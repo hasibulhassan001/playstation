@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:group_list_view/group_list_view.dart';
 import 'dart:developer';
+import 'package:playstation/gamedetails.dart';
 
 
 void main() => runApp(MyApp());
@@ -93,7 +94,6 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   List _items = [];
-  String _name = "";
 
   // Fetch content from the json file
   Future<void> readJson() async {
@@ -163,7 +163,7 @@ class MyApp extends StatelessWidget {
           ),
           trailing: const Icon(Icons.arrow_forward_ios),
           onTap: () {
-            _logUser(user);
+            _awaitReturnValueFromSecondScreen(context);
           },
         ),
       ),
@@ -198,5 +198,15 @@ class MyApp extends StatelessWidget {
 
   void _logUser(String user) {
     log(user);
+  }
+
+  void _awaitReturnValueFromSecondScreen(BuildContext context) async {
+
+    // start the SecondScreen and wait for it to finish with a result
+    final result = await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const GameDetails()
+        ),);
   }
 }
