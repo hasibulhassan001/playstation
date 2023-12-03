@@ -9,6 +9,7 @@ import 'ViewModel/gameDetailsViewModel.dart';
 
 void main() => runApp(MyApp());
 
+List _items = [];
 List<String> platforms = [];
 
 List<String> platforms1 = [];
@@ -79,11 +80,33 @@ void _makeGameCollection(String item,List games) {
   mapGames.addEntries({item : games}.entries);
 }
 
+void clearAllList() {
+  _items.clear();
+  platforms.clear();
+  platforms1.clear();
+  platforms2.clear();
+  platforms3.clear();
+  platforms4.clear();
+  platforms5.clear();
+  platforms6.clear();
+  platforms7.clear();
+  mapGames.clear();
+
+  log("_items : ${_items.length}");
+  log("platforms : ${platforms.length}");
+  log("platforms1 : ${platforms1.length}");
+  log("platforms2 : ${platforms2.length}");
+  log("platforms3 : ${platforms3.length}");
+  log("platforms4 : ${platforms4.length}");
+  log("platforms5 : ${platforms5.length}");
+  log("platforms6 : ${platforms6.length}");
+  log("platforms7 : ${platforms7.length}");
+  log("mapGames : ${mapGames.length}");
+}
+
 // ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   MyApp({super.key});
-
-  List _items = [];
 
   // Fetch content from the json file
   Future<void> readJson() async {
@@ -99,6 +122,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     
     _logUser("Main App Called");
+    // clearAllList();
     readJson();
 
     return MaterialApp(
@@ -134,7 +158,7 @@ class MyApp extends StatelessWidget {
 
   Widget _itemBuilder(BuildContext context, IndexPath index) {
     String user = mapGames.values.toList()[index.section][index.index];
-    GameData data = GameData(user);
+    GameData data = _getGameData(user);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -143,17 +167,26 @@ class MyApp extends StatelessWidget {
         child: ListTile(
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 18, vertical: 10.0),
-          leading: CircleAvatar(
-            child: Text(
-              _getInitials(user),
-              style: const TextStyle(color: Colors.white, fontSize: 18),
-            ),
-          ),
+          // leading: CircleAvatar(
+          //   child: Text(
+          //     _getInitials(data.gameName),
+          //     style: const TextStyle(color: Colors.white, fontSize: 18),
+          //   ),
+          // ),
           title: Text(
             mapGames.values.toList()[index.section][index.index],
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+            style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
           ),
-          trailing: const Icon(Icons.arrow_forward_ios),
+          subtitle: Text(
+            "Released: ${data.releaseDate}\nMetacritic: ${data.metacritic}",
+            style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
+            ),
+          trailing: Image.network(
+                data.imageLink,
+                width: 80,
+                height: 200,
+                fit: BoxFit.fill,
+              ),
           onTap: () {
             _awaitReturnValueFromSecondScreen(context, data);
           },
@@ -171,13 +204,11 @@ class MyApp extends StatelessWidget {
     }
 
     log("Game Name =  ${buffer.toString().substring(0, split.length)}");
-
     return buffer.toString().substring(0, split.length);
   }
 
   void _gameList(List game) {
     var i = 0, j = 0;
-
     for (i = 0;  i < game.length; i++) {
       for (j = 0; j < game[i]["platforms"].length; j++) {
         platforms.add(game[i]["platforms"][j]["platform"]["name"]);
@@ -186,6 +217,27 @@ class MyApp extends StatelessWidget {
     }
     platforms = platforms.toSet().toList();
     log(platforms.toString());
+  }
+
+  GameData _getGameData(String gameName) {
+    String imageLink = '';
+    String releaseDate = '';
+    int metacritic = -1;
+
+    for (var i = 0;  i < _items.length; i++) {
+      if (gameName == _items[i]["name"]) {
+        imageLink = _items[i]["background_image"];
+        releaseDate = _items[i]["released"];
+        if (_items[i]["metacritic"] != null) {
+          metacritic = _items[i]["metacritic"];
+        }
+        else {
+          metacritic = 0;
+        }
+      }
+    }
+    log("Url: $imageLink");
+    return GameData(gameName, imageLink, releaseDate, metacritic);
   }
 
   void _logUser(String user) {

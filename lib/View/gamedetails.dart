@@ -28,7 +28,7 @@ class _GameDetails extends State<GameDetails> {
           children: [
             SizedBox(
               child: Image.network(
-                "https://images.unsplash.com/photo-1547721064-da6cfb341d50?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+                data.imageLink,
                 width: double.infinity,
                 height: 300,
                 fit: BoxFit.fill,
