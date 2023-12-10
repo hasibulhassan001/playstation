@@ -10,6 +10,7 @@ void main() => runApp(MyApp());
 
 GameData? gData;
 List _items = [];
+List _imageUrl = [];
 List<String> platforms = [];
 
 List<String> platforms1 = [];
@@ -106,17 +107,30 @@ void clearAllList() {
 
 void getGameData(var responseData) {
   geners = '';
-  log("getGameData: ${responseData["genres"].length}");
+  _imageUrl.clear();
+
+  // log("responseData ${responseData.toString()}");
+  // log("getGameData img List: ${responseData["short_screenshots"]}");
+
   for (var i = 0; i < responseData["genres"].length; i++) {
     // ignore: prefer_interpolation_to_compose_strings
     geners = '$geners '+responseData["genres"][i]["name"];
   }
+
+  // if (responseData["short_screenshots"] != null) {
+  //   for (var i = 0; i < responseData["short_screenshots"].length; i++) {
+  //     // ignore: prefer_interpolation_to_compose_strings
+  //     _imageUrl.add(responseData["short_screenshots"][i]["image"]);
+  //   }
+  // }
+
   rating = responseData["rating"].toString();
   log("OBJ: ${geners.toString()}");
+  log("Img List: ${_imageUrl.toString()}");
 }
 
 GameData makeObj(GameData data) {
-  return GameData(data.gameName, data.imageLink, data.releaseDate, data.metacritic, data.gameID, geners, rating);
+  return GameData(data.gameName, data.imageLink, data.releaseDate, data.metacritic, data.gameID, geners, rating, _imageUrl);
 }
 
 // ignore: must_be_immutable
@@ -296,7 +310,7 @@ class MyApp extends StatelessWidget {
       }
     }
     log("Url: $imageLink");
-    return GameData(gameName, imageLink, releaseDate, metacritic, gameID,'','');
+    return GameData(gameName, imageLink, releaseDate, metacritic, gameID,'','',[]);
   }
 
   void _logUser(String user) {

@@ -8,8 +8,9 @@ class GameData {
   int gameID = 0;
   String geners = '';
   String rating = '';
+  List imgUrl = [];
 
-  GameData(this.gameName,this.imageLink,this.releaseDate,this.metacritic,this.gameID, this.geners, this.rating);
+  GameData(this.gameName,this.imageLink,this.releaseDate,this.metacritic,this.gameID, this.geners, this.rating, this.imgUrl);
 }
 
 class GameInfo {
