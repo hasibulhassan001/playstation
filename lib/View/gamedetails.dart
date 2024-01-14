@@ -45,12 +45,12 @@ class _GameDetails extends State<GameDetails> {
 
     log("_GameDetails: ${data.imgUrl.length}");
     
-    // if (data.imgUrl.length > 0) {
-    //   imgList.clear();
-    //   for (var i in data.imgUrl) {
-    //     imgList.add(i);
-    //   }
-    // }
+    if (data.imgUrl.length > 0) {
+      imgList.clear();
+      for (var i in data.imgUrl) {
+        imgList.add(i);
+      }
+    }
     log("_GameDetails: ${data.gameName}");
     return Scaffold(
       appBar: AppBar(title: const Text('Game Details')),
